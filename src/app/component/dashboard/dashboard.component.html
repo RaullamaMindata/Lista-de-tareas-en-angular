@@ -1,0 +1,91 @@
+<div class="container-fluid bg-dark">
+  <h1 class="text-white text-center mt-4">Lista de tareas pendientes </h1>
+  <div class="container bg-light" style="border-radius: 15px;">
+
+    <!-- Fila para las listas de tareas -->
+    <div class="row mt-4"  style="height: 500px; ">
+
+      <!-- Columna de tareas sin hacer -->
+      <div class="col-md-6">
+        <div class="card bg-warning mt-4">
+          <h4 class="text-white ps-3 pt-2 pb-2">Lista de tareas pendientes</h4>
+        </div>
+
+        <div class="shadow">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Introducir tarea" name="task" [(ngModel)]="addTaskValue">
+            <button class="btn btn-success" type="button" (click)="addTask()">+</button>
+          </div>
+        </div>
+
+        <!--Lista Tareas sin hacer-->
+        <h4 class="text-primary mt-4">Tareas :</h4>
+
+        <div style="overflow-y: auto; height: 350px;">
+          @for (task of incompleteTasks; track task.id) {
+          <div class="m-3">
+            <div class="p-2 shadow border">
+              <div class="input-group row ps-3">
+                <div class="card col-md-10 border-0">{{ task.task_name }}</div>
+                <button class="btn btn-outline-primary col me-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="call(task)" style="margin-bottom: 10px;">Editar</button>
+                <button class="btn btn-outline-danger col me-2" (click)="deleteTask(task)">Borrar</button>
+                <button class="btn btn-outline-success col" (click)="switchTaskStatus(task)">Hecho</button>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Columna de tareas completadas -->
+      <div class="col-md-6">
+        <div class="card bg-warning mt-4">
+          <h4 class="text-white ps-3 pt-2 pb-2">Tareas Completadas</h4>
+        </div>
+
+        <!--Lista Tareas Completadas-->
+        <h4 class="text-primary mt-4">Tareas Completadas:</h4>
+
+        <div style="overflow-y: auto; height: 350px;">
+          @for (task of completedTasks; track task.id) {
+          <div class="m-3">
+            <div class="p-2 shadow border">
+              <div class="input-group row ps-3">
+                <div class="card col-md-10 border-0">{{ task.task_name }}</div>
+                <button class="btn btn-outline-primary col me-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="call(task)" style="margin-bottom: 10px;">Editar</button>
+
+                <button class="btn btn-outline-warning col me-2" (click)="switchTaskStatus(task)">Deshacer</button>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!--Modal dialog-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Tarea</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" placeholder="Enter tasks" name="task"
+                     [(ngModel)]="editTaskValue">
+              <button class="btn btn-outline-success" type="button" data-bs-dismiss="modal" (click)="editTask()">
+                Actualitzar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-4">
+  <p class="mb-0">Creado por <strong>Raül Lama</strong></p>
+  <a href="https://github.com/raullam" target="_blank" class="text-white">Ver más en mi GitHub</a>
+</footer>
