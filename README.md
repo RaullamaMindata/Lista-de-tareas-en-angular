@@ -1,5 +1,5 @@
 # Lista de Tareas
-![Descripción de la imagen]([ruta/imagen.png](https://github.com/Raullam/Lista-de-tareas-en-angular/blob/main/assets/Sin%20t%C3%ADtulo.png))
+![Descripción de la imagen](https://github.com/Raullam/Lista-de-tareas-en-angular/blob/main/assets/Sin%20t%C3%ADtulo.png?raw=true)
 
 Este proyecto fue generado usando [Angular CLI](https://github.com/angular/angular-cli) versión 19.2.5.
 
